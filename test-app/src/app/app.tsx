@@ -14,7 +14,7 @@ export function TestApp() {
     <div>
       <Wrapper>
         <div style={{ flex: "auto" }}>
-          <h1>The Div100vh component demo</h1>
+          <h1>The Div100vh component test app</h1>
           <h2>Toggle</h2>
           <ToggleWrapper />
           <h2>Details</h2>

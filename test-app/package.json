@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "webpack -p",
-    "start": "webpack-dev-server -d --content-base ./public",
+    "start": "webpack-dev-server",
     "format": "npx prettier -c '**/*.{js,md,ts,tsx,json,html}' --write"
   },
   "dependencies": {

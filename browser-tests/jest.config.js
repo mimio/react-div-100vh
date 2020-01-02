@@ -10,5 +10,5 @@ module.exports = {
     "^.+\\.(ts|tsx)$": "ts-jest"
   },
   "testRunner": "jest-circus/runner",
-  "testTimeout": 30000
+  "testTimeout": 60000
 }
