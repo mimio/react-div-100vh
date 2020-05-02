@@ -1,10 +1,10 @@
-import React from 'react';
-import convertStyle from './convertStyle';
-import getWindowHeight from './getWindowHeight';
+import React from "react";
+import convertStyle from "./convertStyle";
+import getWindowHeight from "./getWindowHeight";
 
-export default class Div100vh extends React.Component {
+class Div100vh extends React.Component {
   state = {
-    style: {}
+    style: {},
   };
 
   // On mount and window resize converts rvh values to px (if there are any).
@@ -16,16 +16,20 @@ export default class Div100vh extends React.Component {
 
   componentDidMount() {
     this.updateStyle();
-    window.addEventListener('resize', this.updateStyle);
+    window.addEventListener("resize", this.updateStyle);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateStyle);
+    window.removeEventListener("resize", this.updateStyle);
   }
 
   render() {
-    const { as: Element = 'div', ...props } = this.props;
+    const { as: Element = "div", ref, ...props } = this.props;
 
-    return <Element {...props} style={this.state.style} />;
+    return <Element ref={ref} {...props} style={this.state.style} />;
   }
 }
+
+export default React.forwardRef((props, ref) => (
+  <Div100vh ref={ref} {...props} />
+));
