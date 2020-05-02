@@ -1,6 +1,6 @@
-import React from "react";
-import convertStyle from "./convertStyle";
-import getWindowHeight from "./getWindowHeight";
+import React from 'react';
+import convertStyle from './convertStyle';
+import getWindowHeight from './getWindowHeight';
 
 class Div100vh extends React.Component {
   state = {
@@ -16,20 +16,20 @@ class Div100vh extends React.Component {
 
   componentDidMount() {
     this.updateStyle();
-    window.addEventListener("resize", this.updateStyle);
+    window.addEventListener('resize', this.updateStyle);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateStyle);
+    window.removeEventListener('resize', this.updateStyle);
   }
 
   render() {
-    const { as: Element = "div", ref, ...props } = this.props;
+    const { as: Element = 'div', forwardedRef, ...props } = this.props;
 
-    return <Element ref={ref} {...props} style={this.state.style} />;
+    return <Element ref={forwardedRef} {...props} style={this.state.style} />;
   }
 }
 
 export default React.forwardRef((props, ref) => (
-  <Div100vh ref={ref} {...props} />
+  <Div100vh forwardedRef={ref} {...props} />
 ));
