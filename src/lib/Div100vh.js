@@ -1,6 +1,6 @@
-import React from 'react';
-import convertStyle from './convertStyle';
-import getWindowHeight from './getWindowHeight';
+import React from "react";
+import convertStyle from "./convertStyle";
+import getWindowHeight from "./getWindowHeight";
 
 class Div100vh extends React.Component {
   state = {
@@ -16,17 +16,18 @@ class Div100vh extends React.Component {
 
   componentDidMount() {
     this.updateStyle();
-    window.addEventListener('resize', this.updateStyle);
+    window.addEventListener("resize", this.updateStyle);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateStyle);
+    window.removeEventListener("resize", this.updateStyle);
   }
 
   render() {
-    const { as: Element = 'div', forwardedRef, ...props } = this.props;
-
-    return <Element ref={forwardedRef} {...props} style={this.state.style} />;
+    const { as: Element = "div", forwardedRef, ...props } = this.props;
+    // previously this was <Element /> so you can specify what type of node to use
+    // but I couldn't figure out how to get the ref to work properly with that syntax
+    return <div ref={forwardedRef} {...props} style={this.state.style} />;
   }
 }
 
