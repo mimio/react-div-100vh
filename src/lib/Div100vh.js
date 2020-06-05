@@ -24,9 +24,15 @@ class Div100vh extends React.Component {
   }
 
   render() {
-    const { as: Element = "div", forwardedRef, ...props } = this.props;
+    const { as: Element, forwardedRef, ...props } = this.props;
     // previously this was <Element /> so you can specify what type of node to use
     // but I couldn't figure out how to get the ref to work properly with that syntax
+    if (Element) {
+      const style = props.style
+        ? { ...this.state.style, ...props.style }
+        : this.state.style;
+      return <Element ref={forwardedRef} {...props} style={style} />;
+    }
     return <div ref={forwardedRef} {...props} style={this.state.style} />;
   }
 }
